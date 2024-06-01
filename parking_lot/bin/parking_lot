@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+if (process.argv.length > 2) {
+  // File mode
+  const filePath = process.argv[2];
+  require('../src/cli')(filePath);
+} else {
+  // Interactive mode
+  require('../src/cli')();
+}
