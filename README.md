@@ -21,7 +21,7 @@ Once the parking lot system is running, you will be prompted with a menu where y
 Please choose an option                      
 
 +-------------------------------------------------------------------+
-
+```
 1. Create parking lot                                             
 
 2. Park a car                                                     
@@ -37,7 +37,7 @@ Please choose an option
 7. Show slot number for a car with a specific registration number
 
 8.  Exit                                                           
-
+```
 +-------------------------------------------------------------------+
 
 
