@@ -1,4 +1,4 @@
-# flam_assignment (Parking Lot System)
+# Parking Lot System
 
 This project implements a simple parking lot system with command-line interface (CLI) functionalities. The system allows users to create a parking lot, park cars, leave slots, and perform various queries such as showing the status of the parking lot, retrieving registration numbers for cars with a specific color, and finding slot numbers for cars with a specific color or registration number.
 
