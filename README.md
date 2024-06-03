@@ -17,8 +17,11 @@ To use the parking lot system, follow these steps:
 Once the parking lot system is running, you will be prompted with a menu where you can choose various options:
 
 +-------------------------------------------------------------------+
+
 Please choose an option                      
+
 +-------------------------------------------------------------------+
+
 1. Create parking lot                                             
 
 2. Park a car                                                     
