@@ -15,27 +15,25 @@ To use the parking lot system, follow these steps:
 ## Usage
 
 Once the parking lot system is running, you will be prompted with a menu where you can choose various options:
-+-------------------------------------------------------------------+
-
-|                      Please choose an option                      |
 
 +-------------------------------------------------------------------+
+Please choose an option                      
++-------------------------------------------------------------------+
+1. Create parking lot                                             
 
-| 1. Create parking lot                                             |
+2. Park a car                                                     
 
-| 2. Park a car                                                     |
+ 3. Leave a slot                                                   
 
-| 3. Leave a slot                                                   |
+ 4. Show status                                                    
 
-| 4. Show status                                                    |
+5. Show registration numbers for cars with a specific color       
 
-| 5. Show registration numbers for cars with a specific color       |
+6. Show slot numbers for cars with a specific color               
 
-| 6. Show slot numbers for cars with a specific color               |
+7. Show slot number for a car with a specific registration number
 
-| 7. Show slot number for a car with a specific registration number |
-
-| 8. Exit                                                           |
+8.  Exit                                                           
 
 +-------------------------------------------------------------------+
 
