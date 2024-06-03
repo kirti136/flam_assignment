@@ -4,34 +4,83 @@ const ParkingLot = require("./parkingLot");
 
 const parkingLot = new ParkingLot();
 
-const processCommand = (command) => {
-  const [action, ...params] = command.split(" ");
-  switch (action) {
-    case "create_parking_lot":
-      console.log(parkingLot.createParkingLot(Number(params[0])));
+const showMenu = () => {
+  console.log(`
++-------------------------------------------------------------------+
+|                      Please choose an option                      |
++-------------------------------------------------------------------+
+| 1. Create parking lot                                             |
+| 2. Park a car                                                     |
+| 3. Leave a slot                                                   |
+| 4. Show status                                                    |
+| 5. Show registration numbers for cars with a specific color       |
+| 6. Show slot numbers for cars with a specific color               |
+| 7. Show slot number for a car with a specific registration number |
+| 8. Exit                                                           |
++-------------------------------------------------------------------+
+  `);
+};
+
+const handleOption = (option) => {
+  switch (option) {
+    case "1":
+      rl.question("Enter the number of slots: ", (slots) => {
+        console.log(parkingLot.createParkingLot(Number(slots)));
+        showMenu();
+        rl.prompt();
+      });
       break;
-    case "park":
-      console.log(parkingLot.park(params[0], params[1]));
+    case "2":
+      rl.question(
+        "Enter the registration number and color (e.g., KA-01-HH-1234 White): ",
+        (input) => {
+          const [regNumber, color] = input.split(" ");
+          console.log(parkingLot.park(regNumber, color));
+          showMenu();
+          rl.prompt();
+        }
+      );
       break;
-    case "leave":
-      console.log(parkingLot.leave(Number(params[0])));
+    case "3":
+      rl.question("Enter the slot number to leave: ", (slotNumber) => {
+        console.log(parkingLot.leave(Number(slotNumber)));
+        showMenu();
+        rl.prompt();
+      });
       break;
-    case "status":
+    case "4":
       console.log(parkingLot.status());
+      showMenu();
+      rl.prompt();
       break;
-    case "registration_numbers_for_cars_with_colour":
-      console.log(parkingLot.registrationNumbersForCarsWithColour(params[0]));
+    case "5":
+      rl.question("Enter the color: ", (color) => {
+        console.log(parkingLot.registrationNumbersForCarsWithColour(color));
+        showMenu();
+        rl.prompt();
+      });
       break;
-    case "slot_numbers_for_cars_with_colour":
-      console.log(parkingLot.slotNumbersForCarsWithColour(params[0]));
+    case "6":
+      rl.question("Enter the color: ", (color) => {
+        console.log(parkingLot.slotNumbersForCarsWithColour(color));
+        showMenu();
+        rl.prompt();
+      });
       break;
-    case "slot_number_for_registration_number":
-      console.log(parkingLot.slotNumberForRegistrationNumber(params[0]));
+    case "7":
+      rl.question("Enter the registration number: ", (regNumber) => {
+        console.log(parkingLot.slotNumberForRegistrationNumber(regNumber));
+        showMenu();
+        rl.prompt();
+      });
       break;
-    case "exit":
+    case "8":
+      console.log("Exiting parking lot system.");
       process.exit(0);
     default:
-      console.log("Invalid command");
+      console.log("Invalid option. Please choose a number between 1 and 8.");
+      showMenu();
+      rl.prompt();
   }
 };
 
@@ -46,7 +95,7 @@ module.exports = (filePath) => {
     });
   } else {
     // Interactive mode
-    const rl = readline.createInterface({
+    global.rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
       prompt: "> ",
@@ -55,11 +104,19 @@ module.exports = (filePath) => {
     rl.prompt();
 
     rl.on("line", (line) => {
-      processCommand(line.trim());
-      rl.prompt();
+      const trimmedLine = line.trim();
+      if (trimmedLine) {
+        handleOption(trimmedLine);
+      } else {
+        showMenu();
+        rl.prompt();
+      }
     }).on("close", () => {
       console.log("Exiting parking lot system.");
       process.exit(0);
     });
+
+    showMenu();
+    rl.prompt();
   }
 };

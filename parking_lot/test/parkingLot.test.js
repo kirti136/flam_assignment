@@ -8,9 +8,12 @@ describe("ParkingLot", () => {
     parkingLot = new ParkingLot();
   });
 
-  it('should not allow parking without creating a parking lot', () => {
-    const result = parkingLot.park('KA-01-HH-1234', 'White');
-    assert.strictEqual(result, 'Parking lot not created. Please create a parking lot first.');
+  it("should not allow parking without creating a parking lot", () => {
+    const result = parkingLot.park("KA-01-HH-1234", "White");
+    assert.strictEqual(
+      result,
+      "Parking lot not created. Please create a parking lot first."
+    );
   });
 
   it("should not allow parking of a car with a duplicate registration number", () => {

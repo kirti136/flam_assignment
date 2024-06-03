@@ -1,3 +1,5 @@
+const Table = require("cli-table");
+
 class ParkingLot {
   constructor() {
     this.capacity = 0;
@@ -67,18 +69,45 @@ class ParkingLot {
     return `${header}\n${body}`;
   }
 
+  // status() {
+  //   if (this.capacity === 0) {
+  //     return "No data to show. Parking lot not created. Please create a parking lot first.";
+  //   }
+
+  //   const table = new Table({
+  //     head: ["Slot No.", "Registration No", "Colour"],
+  //     colWidths: [10, 20, 15],
+  //   });
+
+  //   this.slots.forEach((car, index) => {
+  //     if (car) {
+  //       table.push([index + 1, car.registrationNumber, car.color]);
+  //     }
+  //   });
+
+  //   return table.toString();
+  // }
+
   registrationNumbersForCarsWithColour(color) {
-    return this.slots
-      .filter((car) => car && car.color === color)
+    let slots = this.slots
+      .filter((car) => car && car.color.toLowerCase() === color.toLowerCase())
       .map((car) => car.registrationNumber)
       .join(", ");
+
+    return slots.length === 0 ? "Not Found" : slots;
   }
 
   slotNumbersForCarsWithColour(color) {
-    return this.slots
-      .map((car, index) => (car && car.color === color ? index + 1 : null))
+    let slots = this.slots
+      .map((car, index) =>
+        car && car.color.toLowerCase() === color.toLowerCase()
+          ? index + 1
+          : null
+      )
       .filter(Boolean)
       .join(", ");
+
+    return slots.length === 0 ? "Not Found" : slots;
   }
 
   slotNumberForRegistrationNumber(registrationNumber) {
