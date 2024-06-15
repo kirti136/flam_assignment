@@ -23,7 +23,7 @@ const showMenu = () => {
 
 const processCommand = (command) => {
   const trimmedCommand = command.trim();
-  console.log(`Processing command: '${trimmedCommand}'`);
+  console.log("》 Processing command:", trimmedCommand);
   const [action, ...params] = trimmedCommand.split(/\s+/);
   switch (action) {
     case "create_parking_lot":
