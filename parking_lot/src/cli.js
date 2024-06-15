@@ -21,6 +21,40 @@ const showMenu = () => {
   `);
 };
 
+const processCommand = (command) => {
+  const trimmedCommand = command.trim();
+  console.log(`Processing command: '${trimmedCommand}'`);
+  const [action, ...params] = trimmedCommand.split(/\s+/);
+  switch (action) {
+    case "create_parking_lot":
+      console.log(parkingLot.createParkingLot(Number(params[0])));
+      break;
+    case "park":
+      console.log(parkingLot.park(params[0], params[1]));
+      break;
+    case "leave":
+      console.log(parkingLot.leave(Number(params[0])));
+      break;
+    case "status":
+      console.log(parkingLot.status());
+      break;
+    case "registration_numbers_for_cars_with_colour":
+      console.log(parkingLot.registrationNumbersForCarsWithColour(params[0]));
+      break;
+    case "slot_numbers_for_cars_with_colour":
+      console.log(parkingLot.slotNumbersForCarsWithColour(params[0]));
+      break;
+    case "slot_number_for_registration_number":
+      console.log(parkingLot.slotNumberForRegistrationNumber(params[0]));
+      break;
+    case "exit":
+      console.log("Exiting parking lot system.");
+      process.exit(0);
+    default:
+      console.log("Invalid command");
+  }
+};
+
 const handleOption = (option) => {
   switch (option) {
     case "1":

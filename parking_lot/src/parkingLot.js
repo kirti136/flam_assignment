@@ -13,6 +13,10 @@ class ParkingLot {
   }
 
   park(registrationNumber, color) {
+    if (!registrationNumber || !color) {
+      return "Invalid input. Please provide both registration number and color.";
+    }
+
     if (this.capacity === 0) {
       return "Parking lot not created. Please create a parking lot first.";
     }
